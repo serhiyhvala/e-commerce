@@ -2,7 +2,7 @@
 
 import {FC, ReactNode} from "react";
 import AdminHeader from "@/components/AdminHeader";
-import {useAuth} from "@/hooks";
+import {useAuth} from "@/hooks/useAuth";
 import {redirect} from "next/navigation";
 import Loading from "@/components/Loading";
 
