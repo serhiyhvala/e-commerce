@@ -1,24 +1,28 @@
-import { ClerkProvider } from "@clerk/nextjs";
+import {ClerkProvider} from "@clerk/nextjs";
 import "./globals.css";
-import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
+import type {Metadata} from "next";
+import {Roboto} from "next/font/google";
+import {Toaster} from "react-hot-toast";
 
-const roboto = Roboto({ weight: "400", subsets: ["latin"] });
+const roboto = Roboto({weight: "400", subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+    title: "Create Next App",
 };
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                       children,
+                                   }: {
+    children: React.ReactNode;
 }) {
-  return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={roboto.className}>{children}</body>
-      </html>
-    </ClerkProvider>
-  );
+    return (
+        <ClerkProvider>
+                <html lang="en">
+                <body className={roboto.className}>
+                <Toaster />
+                {children}
+                </body>
+                </html>
+        </ClerkProvider>
+    );
 }
