@@ -20,7 +20,7 @@ const ProductCard :FC<IProductCard>= ({price, description, image, title, id}) =>
                     <Link href={`/admin/products/${id}`}>View Details</Link>
                 </Button>
                 <Button asChild variant='outline' className='border-gray-950'>
-                    <Link href={`/admin/products/${id}`}>Edit</Link>
+                    <Link href={`/admin/products/edit/${id}`}>Edit</Link>
                 </Button>
             </div>
         </div>
