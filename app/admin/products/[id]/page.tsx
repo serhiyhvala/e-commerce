@@ -9,6 +9,7 @@ import {Button} from "@/components/ui/button";
 import {Trash} from "lucide-react";
 import AlertModal from "@/components/AlertModal";
 import toast from "react-hot-toast";
+import Loading from "@/components/Loading";
 
 const Product = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -42,7 +43,7 @@ const Product = () => {
     }
 
     if (isLoading) {
-        return 'Loading...'
+        return <Loading />
     }
     if (!currentProduct) {
         return "Not Found"

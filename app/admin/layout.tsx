@@ -4,12 +4,13 @@ import {FC, ReactNode} from "react";
 import AdminHeader from "@/components/AdminHeader";
 import {useAuth} from "@/hooks";
 import {redirect} from "next/navigation";
+import Loading from "@/components/Loading";
 
 const AuthLayout: FC<{ children: ReactNode }> = ({children}) => {
     const {user, isLoading} = useAuth()
 
     if(isLoading){
-        return <h2>Loading...</h2>
+        return <Loading />
     }
 
     if(!user){
