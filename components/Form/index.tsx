@@ -12,7 +12,7 @@ import {IProduct} from "@/types/product.types";
 
 interface IFormProps {
     formState: IProduct
-    handleSubmitForm: (event: FormEvent<HTMLFormElement>) => void
+    handleSubmitForm: (event: FormEvent<HTMLFormElement>, form: IProduct) => void
     children: ReactNode
 }
 
@@ -36,7 +36,7 @@ const Form: FC<IFormProps> = ({children, handleSubmitForm, formState}) => {
     }
 
     return (
-        <form className='flex flex-col gap-6' onSubmit={handleSubmitForm}>
+        <form className='flex flex-col gap-6' onSubmit={(e) => handleSubmitForm(e,form)}>
             <div className="flex flex-col gap-3 items-start">
                 <Label htmlFor='iamge'>Images</Label>
                 {form.image ?

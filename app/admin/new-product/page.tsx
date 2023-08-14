@@ -12,14 +12,14 @@ import Form from "@/components/Form";
 const NewProduct = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [form, setForm] = useState<IProduct>({
-        image: "",
-        title: "",
+        title: '',
+        description: '',
         price: 0,
-        description: ""
+        image: ''
     })
     const router = useRouter()
 
-    const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmitForm = async (event: FormEvent<HTMLFormElement>, form: IProduct) => {
         event.preventDefault()
         setIsLoading(true)
         if (!form.image.length) {

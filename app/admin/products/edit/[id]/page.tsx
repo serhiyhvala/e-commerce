@@ -15,12 +15,7 @@ const EditProduct = () => {
     const {id} = useParams()
     const {currentProduct, isLoading} = useGetCurrentProduct(id as string)
     const [loading, setLoading] = useState(false)
-    const [form, setForm] = useState<IProduct>({
-        title: '',
-        image: "",
-        description: "",
-        price: 0
-    })
+    const [form, setForm] = useState<IProduct>()
     const router = useRouter()
 
     useEffect(() => {
@@ -30,7 +25,7 @@ const EditProduct = () => {
         }
     }, [currentProduct])
 
-    const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmitForm = async (event: FormEvent<HTMLFormElement>, form: IProduct) => {
         event.preventDefault()
         setLoading(true)
         if (!form.image.length) {
@@ -64,7 +59,7 @@ const EditProduct = () => {
                 <span className='text-4xl font-bold'>Edit product</span>
                 <span className='font-bold text-gray-500'>Edit your product</span>
             </div>
-            {form.description.length && (
+            {form?.description.length && (
                 <Form formState={form} handleSubmitForm={handleSubmitForm}>
                     <Button type='submit' className='self-start' disabled={loading}>Update</Button>
                 </Form>
