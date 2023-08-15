@@ -33,7 +33,7 @@ const NewProduct = () => {
             return
         }
         try {
-            const {data} = await axios.post<Product>('/api/products', form)
+            const {data} = await axios.post<Product>('/api/products/create', form)
             setIsLoading(false)
             router.push(`/admin/products/${data.id}`)
             setForm({title: '', description: "", image: '', price: 0})
