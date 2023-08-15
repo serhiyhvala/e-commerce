@@ -9,11 +9,13 @@ export const useAuth = () => {
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         const currentUser = async() => {
-            const {data} = await axios.get<User>("/api/user")
-            setUser(data)
+            if(userId){
+                const {data} = await axios.get<User>("/api/user")
+                setUser(data)
+            }
             setIsLoading(false)
         }
         currentUser()
-    }, [])
+    }, [userId])
     return {user, isLoading, userId}
 }
