@@ -11,18 +11,18 @@ import {cn} from "@/lib/utils";
 
 const UserHeader = () => {
     const [scroll, setIsScroll] = useState(false)
-    const {userId} = useAuth()
+    const {userId, user} = useAuth()
 
     useEffect(() => {
         const onScroll = () => {
-            if(window.scrollY > 0){
+            if (window.scrollY > 0) {
                 setIsScroll(true)
-            }else {
+            } else {
                 setIsScroll(false)
             }
         };
         window.removeEventListener('scroll', onScroll);
-        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('scroll', onScroll, {passive: true});
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
     return (
@@ -35,19 +35,31 @@ const UserHeader = () => {
                     <Button variant='outline'>
                         <ShoppingBasket/>
                     </Button>
-                    {!userId ? (
-                        <>
-                            <div className='items-center gap-2 hidden sm:flex'>
+                    <div className='items-center gap-2 hidden sm:flex'>
+                        {!userId ? (
+                            <>
                                 <Button asChild variant='secondary'>
                                     <Link href='/sign-in'>Sign In</Link>
                                 </Button>
                                 <Button asChild>
                                     <Link href='/sign-up'>Sign Up</Link>
                                 </Button>
-                            </div>
-                            <UserMobileMenu/>
-                        </>
+                            </>
+                        ) : (
+                            <Button asChild>
+                                <Link href='/profile'>Profile</Link>
+                            </Button>
+                        )}
+                    </div>
+                    {user?.isAdmin ? (
+                        <div className='flex gap-2 items-center'>
+                            <Button asChild variant='outline'>
+                                <Link href='/admin'>Admin</Link>
+                            </Button>
+                            <UserButton/>
+                        </div>
                     ) : <UserButton/>}
+                    <UserMobileMenu/>
                 </div>
             </div>
         </header>
