@@ -9,7 +9,7 @@ export const useGetCurrentProduct = (id: string) => {
     useEffect(() => {
         const getCurrentProduct = async () => {
             try {
-                const data = await fetch(`/api/products/get/${id}`, {next: {revalidate: 0}});
+                const data = await fetch(`/api/products/get/${id}`);
                 setIsLoading(false);
                 return data.json();
             } catch (error) {

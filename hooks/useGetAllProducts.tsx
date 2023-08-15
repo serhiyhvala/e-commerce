@@ -8,7 +8,7 @@ export const useGetAllProducts = () => {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const data = await fetch("/api/products", { next: { revalidate: 0 }});
+        const data = await fetch("/api/products");
         setIsLoading(false);
         return data.json();
       } catch (error) {

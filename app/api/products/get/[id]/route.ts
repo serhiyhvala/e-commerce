@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import prismaDb from "@/configs/prisma";
-
+export const revalidate = 0
 export async function GET(req: Request, {params}: {params: {id: string}}){
     try {
         const currentProduct = await prismaDb.product.findUnique({
