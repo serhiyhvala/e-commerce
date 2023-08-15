@@ -4,10 +4,10 @@ import Link from "next/link";
 import {ShoppingBasket} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {useAuth} from "@/hooks/useAuth";
-import {UserButton} from "@clerk/nextjs";
 import UserMobileMenu from "@/components/UserMobileMenu";
 import {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
+import UserProfileMenu from "@/components/UserProfileMenu";
 
 const UserHeader = () => {
     const [scroll, setIsScroll] = useState(false)
@@ -46,19 +46,18 @@ const UserHeader = () => {
                                 </Button>
                             </>
                         ) : (
-                            <Button asChild>
-                                <Link href='/profile'>Profile</Link>
-                            </Button>
+                            <>
+                                {user?.isAdmin && (
+                                    <div className='flex gap-2 items-center'>
+                                        <Button asChild variant='outline'>
+                                            <Link href='/admin'>Admin</Link>
+                                        </Button>
+                                    </div>
+                                )}
+                                <UserProfileMenu/>
+                            </>
                         )}
                     </div>
-                    {user?.isAdmin ? (
-                        <div className='flex gap-2 items-center'>
-                            <Button asChild variant='outline'>
-                                <Link href='/admin'>Admin</Link>
-                            </Button>
-                            <UserButton/>
-                        </div>
-                    ) : <UserButton/>}
                     <UserMobileMenu/>
                 </div>
             </div>
