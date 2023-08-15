@@ -5,13 +5,19 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {BadgePlus, GalleryVertical, MenuIcon, ShoppingBasket} from "lucide-react";
+import {BadgePlus, GalleryVertical, LayoutDashboard, MenuIcon, ShoppingBasket} from "lucide-react";
 
 const MobileMenu = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger><MenuIcon className='block sm:hidden'/></DropdownMenuTrigger>
             <DropdownMenuContent>
+                <DropdownMenuItem>
+                    <Link href="/admin" className='flex items-center gap-2'>
+                        <LayoutDashboard className='w-5 h-5'/>
+                        <span>Dashboard</span>
+                    </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                     <Link href="/admin/products" className='flex items-center gap-2'>
                         <GalleryVertical className='w-5 h-5'/>

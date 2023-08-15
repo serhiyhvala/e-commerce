@@ -2,7 +2,7 @@ import {UserButton} from "@clerk/nextjs";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import MobileMenu from "@/components/MobileMenu";
-import {BadgePlus, GalleryVertical, ShoppingBasket} from "lucide-react";
+import {BadgePlus, GalleryVertical, LayoutDashboard, ShoppingBasket} from "lucide-react";
 
 const AdminHeader = () => {
     return (
@@ -12,6 +12,14 @@ const AdminHeader = () => {
                     <Link href='/admin'>Admin Panel</Link>
                 </span>
                 <ul className='hidden items-center gap-4 sm:flex'>
+                    <li>
+                        <Button asChild>
+                            <Link href="/admin" className='flex items-center gap-2'>
+                                <LayoutDashboard className='w-5 h-5'/>
+                                <span>Dashboard</span>
+                            </Link>
+                        </Button>
+                    </li>
                     <li>
                         <Button asChild>
                             <Link href="/admin/products" className='flex items-center gap-2'>
