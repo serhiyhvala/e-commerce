@@ -4,7 +4,7 @@ import {useParams, useRouter} from "next/navigation";
 import axios from "axios";
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
-import {Trash} from "lucide-react";
+import {ChevronDown, ChevronUp, LayoutDashboard, ShoppingCart, Trash} from "lucide-react";
 import AlertModal from "@/components/AlertModal";
 import toast from "react-hot-toast";
 import Loading from "@/components/Loading";
@@ -49,15 +49,24 @@ const Product = () => {
                     <Button variant='destructive' disabled={isLoading}><Trash/></Button>
                 </AlertModal>
             </div>
-            <div className="flex flex-col items-center gap-3">
-                <Image src={currentProduct.image} alt={currentProduct.title} className='rounded-xl' width={300}
-                       height={300}/>
-                <div className="flex flex-col w-1/4 gap-2">
-                    <span className='text-3xl font-bold border-b-2'>{currentProduct.title}</span>
-                    <span className='text-sm text-gray-500'>{currentProduct.description}</span>
-                    <span className='p-2 border-2 rounded-sm'>Price: {currentProduct.price}$</span>
-                    <Button asChild>
-                        <Link href={`/admin/products/edit/${currentProduct.id}`}>Edit Product</Link>
+            <div className="flex flex-wrap gap-6 items-start justify-center">
+                <Image src={currentProduct.image}
+                       alt={currentProduct.title}
+                       width={400} height={400}
+                       className='border-2 rounded-xl'
+                />
+                <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3 border-b-2 pb-2">
+                        <span className='text-3xl font-bold'>{currentProduct.title}</span>
+                        <span className='text-xl font-bold'>${currentProduct.price}.00</span>
+                    </div>
+                    <div className='flex flex-col gap-2 pb-2 border-b-2 cursor-pointer'>
+                        <span className='text-sm text-gray-500 max-w-[400px]'>{currentProduct.description}</span>
+                    </div>
+                    <Button asChild className='sm:self-start' variant='outline'>
+                        <Link href={`/admin/products/edit/${currentProduct.id}`}>
+                            Edit Product
+                        </Link>
                     </Button>
                 </div>
             </div>
