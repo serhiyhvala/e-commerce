@@ -5,10 +5,6 @@ import {Product} from "@prisma/client";
 
 export async function GET(req: Request, {params}: {params: {id: string}}){
     try {
-        const {userId} = auth()
-        if (!userId) {
-            return new NextResponse("Unauthenticated", { status: 403 });
-        }
         const currentProduct = await prismaDb.product.findUnique({
             where: {
                 id: params.id
