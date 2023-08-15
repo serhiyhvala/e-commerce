@@ -18,7 +18,7 @@ const Product = () => {
     const submitHandler = async() => {
         setIsLoading(true)
         try {
-            const {data} = await axios.delete(`/api/products/${id}`)
+            const {data} = await axios.delete(`/api/products/edit/${id}`)
             setIsLoading(false)
             toast.success(data)
             router.push('/admin')

@@ -39,7 +39,7 @@ const EditProduct = () => {
             return
         }
         try {
-            await axios.patch<Product>(`/api/products/${currentProduct?.id}`, form)
+            await axios.patch<Product>(`/api/products/edit/${currentProduct?.id}`, form)
             setLoading(false)
             router.push(`/admin/products/${currentProduct?.id}`)
             toast.success('Product Updated Successfully')

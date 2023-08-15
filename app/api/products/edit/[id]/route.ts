@@ -1,20 +1,7 @@
 import {auth} from "@clerk/nextjs";
+import {Product} from "@prisma/client";
 import {NextResponse} from "next/server";
 import prismaDb from "@/configs/prisma";
-import {Product} from "@prisma/client";
-
-export async function GET(req: Request, {params}: {params: {id: string}}){
-    try {
-        const currentProduct = await prismaDb.product.findUnique({
-            where: {
-                id: params.id
-            }
-        })
-        return NextResponse.json(currentProduct)
-    } catch (error){
-        return new NextResponse("Internal server error", {status: 500})
-    }
-}
 
 export async function PATCH(req: Request, {params}: {params: {id: string}}){
     try {

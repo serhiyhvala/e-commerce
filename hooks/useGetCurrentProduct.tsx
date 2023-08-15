@@ -10,7 +10,7 @@ export const useGetCurrentProduct = (id: string) => {
     useEffect(() => {
         const getCurrentProduct = async () => {
             try {
-                const {data} = await axios.get<Product>(`/api/products/${id}`)
+                const {data} = await axios.get<Product>(`/api/products/get/${id}`)
                 setIsLoading(false)
                 return data
             } catch (error) {
