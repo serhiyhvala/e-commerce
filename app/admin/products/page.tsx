@@ -22,9 +22,9 @@ const ProductsPage = () => {
                 <span className='text-4xl font-bold'>All Products</span>
                 <span className='font-bold text-gray-500'>Show your all products</span>
             </div>
-            <div className="flex flex-wrap gap-5 items-center justify-center sm:justify-start">
+            <div className="flex flex-wrap gap-3 items-center justify-center">
                 {products.map(product => (
-                    <ProductCard key={product.id} {...product}>
+                    <ProductCard key={product.id} {...product} link={`/admin/products/${product.id}`}>
                         <Link href={`/admin/products/${product.id}`}
                               className='rounded-full bg-black p-3 flex justify-center'>
                             <Expand className='text-white'/>

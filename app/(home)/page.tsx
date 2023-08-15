@@ -22,7 +22,7 @@ export default function Home() {
                     ))
                 )}
                 {products.map(item => (
-                    <ProductCard key={item.id} {...item}>
+                    <ProductCard key={item.id} {...item} link={`/products/${item.id}`}>
                         <>
                             <span className='rounded-full bg-black p-3 flex justify-center'>
                                 <Expand className='text-white'/>
