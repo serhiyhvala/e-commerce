@@ -1,10 +1,10 @@
 import {ClerkProvider} from "@clerk/nextjs";
 import "./globals.css";
 import type {Metadata} from "next";
-import {Roboto} from "next/font/google";
+import {Urbanist} from "next/font/google";
 import {Toaster} from "react-hot-toast";
 
-const roboto = Roboto({weight: "400", subsets: ["latin"]});
+const roboto = Urbanist({subsets: ["latin"]});
 
 export const metadata: Metadata = {
     title: "Create Next App",
