@@ -1,28 +1,26 @@
-import {FC} from "react";
+import {FC, ReactNode} from "react";
 import {Product} from "@prisma/client";
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
-import Link from "next/link";
+import {cropText} from "@/utils/cropText";
 
-interface IProductCard extends Product {}
+interface IProductCard extends Product {
+    children: ReactNode
+}
 
-const ProductCard :FC<IProductCard>= ({price, description, image, title, id}) => {
+const ProductCard :FC<IProductCard>= ({price, description, image, title, children}) => {
     return (
-        <div className='bg-gray-200 shadow-xl rounded-xl flex flex-col gap-3 relative'>
-            <Image src={image} alt={title} width={350} height={350} className='w-[350px] h-[350px] rounded-t-xl object-cover'/>
-            <span className='absolute top-1 right-1 bg-blue-500 rounded-xl p-2 text-white'>{price}$</span>
-            <div className="p-2 flex flex-col gap-3">
-                <div className='flex flex-col'>
-                    <span className='text-2xl font-bold'>{title}</span>
-                    <span className='text-sm text-gray-500'>{description}</span>
+        <div className='border-2 shadow-xl rounded-xl flex flex-col gap-3 p-3 group cursor-pointer'>
+            <div className='relative'>
+                <Image src={image} alt={title} width={300} height={300} className='w-[300px] h-[300px] rounded-xl object-cover'/>
+                <div className='opacity-0 group-hover:opacity-100 transition duration-300 absolute bottom-5 px-6 flex gap-3 items-center justify-center w-full'>
+                    {children}
                 </div>
-                <Button asChild>
-                    <Link href={`/admin/products/${id}`}>View Details</Link>
-                </Button>
-                <Button asChild variant='outline' className='border-gray-950'>
-                    <Link href={`/admin/products/edit/${id}`}>Edit</Link>
-                </Button>
             </div>
+            <div className="flex flex-col">
+                <span className='font-bold text-lg'>{title}</span>
+                <span className="text-gray-500">{cropText(description, 30)}</span>
+            </div>
+            <span className='font-bold'>${price}</span>
         </div>
     );
 };
