@@ -10,7 +10,7 @@ export const useAuth = () => {
     useEffect(() => {
         const currentUser = async() => {
             if(userId){
-                const {data} = await axios.get<User>("/api/user")
+                const {data} = await axios.post<User>("/api/user", {userId})
                 setUser(data)
             }
             setIsLoading(false)

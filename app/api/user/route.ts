@@ -1,27 +1,29 @@
 import {auth} from "@clerk/nextjs";
 import prismaDb from "@/configs/prisma";
 import {NextResponse} from "next/server";
+import {Product} from "@prisma/client";
 
-export async function GET(req: Request){
+export async function POST(req: Request){
     try {
-        const {userId} = auth()
-        if(!userId){
-            return new NextResponse("Unauthorized", {status: 401})
-        }
-        const isUserExists = await prismaDb.user.findUnique({
-            where: {
-                userId
-            }
-        })
-        if(isUserExists){
-            return NextResponse.json(isUserExists)
-        } else {
-            const newUser =  await prismaDb.user.create({
-                data: {
+        const {userId} = await req.json()
+        if(userId){
+            const isUserExists = await prismaDb.user.findUnique({
+                where: {
                     userId
                 }
             })
-            return NextResponse.json(newUser)
+            if(isUserExists){
+                return NextResponse.json(isUserExists)
+            } else {
+                const newUser =  await prismaDb.user.create({
+                    data: {
+                        userId
+                    }
+                })
+                return NextResponse.json(newUser)
+            }
+        }else {
+            return new NextResponse("Unauthorized", {status: 401})
         }
     } catch (error){
         console.error(error)
