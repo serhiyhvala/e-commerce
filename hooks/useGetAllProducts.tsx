@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Product } from "@prisma/client";
-import axios from "axios";
-import { IProduct } from "@/types/product.types";
 
 export const useGetAllProducts = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +8,7 @@ export const useGetAllProducts = () => {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const data = await fetch("/api/products", { cache: "no-store" });
+        const data = await fetch("/api/products");
         setIsLoading(false);
         return data.json();
       } catch (error) {
