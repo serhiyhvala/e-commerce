@@ -8,6 +8,7 @@ import Image from "next/image";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import LikedProducts from "@/components/LikedProducts";
+import Orders from "@/components/Orders";
 
 const ProfilePage = () => {
     const {isLoading, userId} = useAuth()
@@ -46,10 +47,7 @@ const ProfilePage = () => {
                 </div>
             </div>
             <LikedProducts />
-            <span className='text-4xl font-bold pb-5 border-b-2 flex items-start'>Orders</span>
-            <div className="flex items-center justify-center gap-5">
-                <span className='text-5xl font-bold'>You don&apos;t have any orders yet</span>
-            </div>
+            <Orders />
         </div>
     );
 };
