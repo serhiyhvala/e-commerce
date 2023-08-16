@@ -54,6 +54,7 @@ const Admin = () => {
             </div>
             <span className='text-3xl font-bold'>Products</span>
             <DataTable columns={productsColumns} data={dataProducts}/>
+            <span className='text-3xl font-bold'>Orders</span>
             <DataTable columns={ordersColumns} data={dataOrders}/>
         </div>
     );
