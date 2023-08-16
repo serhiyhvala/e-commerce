@@ -4,16 +4,31 @@ import DataTable from "@/components/DataTable";
 import {useGetAllProducts} from "@/hooks/useGetAllProducts";
 import {cropText} from "@/utils/cropText";
 import {IProductsColumns, productsColumns} from "@/data/productsColumns.data";
+import {IOrderColumns, ordersColumns} from "@/data/ordersColumns.data";
+import {useGetAllOrders} from "@/hooks/useGetAllOrders";
 
 const Admin = () => {
     const {products} = useGetAllProducts()
+    const {orders} = useGetAllOrders()
+    console.log(orders)
+    const dataOrders: IOrderColumns[] = orders.map(item => (
+        {
+            fullName: item.fullName,
+            email: item.email,
+            userId: item.userId,
+            address: item.address,
+            totalPrice: item.totalPrice,
+            cretedAt: new Date(item.cretedAt).toLocaleDateString('en-US')
+        }
+    ))
+
     const dataProducts: IProductsColumns[] = products.map(item => ({
         title: item.title,
         description: cropText(item.description, 100),
         price: item.price,
         createdAt: new Date(item.cretedAt).toLocaleDateString('en-US')
     }))
-
+    const totalOrdersPrice = orders.reduce((a, b) => a + b.totalPrice, 0)
     return (
         <div className='mt-3 flex flex-col gap-3'>
             <div
@@ -29,12 +44,17 @@ const Admin = () => {
                     </div>
                     <div className="flex flex-col gap-2 items-center border-2 p-2 rounded-xl">
                         <span className='text-lg'>Total Orders</span>
-                        <span className='text-xl font-bold'>0</span>
+                        <span className='text-xl font-bold'>{orders.length}</span>
+                    </div>
+                    <div className="flex flex-col gap-2 items-center border-2 p-2 rounded-xl">
+                        <span className='text-lg'>Total sells</span>
+                        <span className='text-xl font-bold'>${totalOrdersPrice}</span>
                     </div>
                 </div>
             </div>
             <span className='text-3xl font-bold'>Products</span>
             <DataTable columns={productsColumns} data={dataProducts}/>
+            <DataTable columns={ordersColumns} data={dataOrders}/>
         </div>
     );
 };

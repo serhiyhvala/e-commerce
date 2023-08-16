@@ -2,7 +2,7 @@ import {Product} from "@prisma/client";
 
 export interface IOrder{
     id: string
-    createdAt: Date
+    cretedAt: Date
     updatedAt: Date
     userId: string
     fullName: string
