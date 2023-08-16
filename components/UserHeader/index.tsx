@@ -8,12 +8,17 @@ import UserMobileMenu from "@/components/UserMobileMenu";
 import {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import UserProfileMenu from "@/components/UserProfileMenu";
+import {useStore} from "@/store/store";
 
 const UserHeader = () => {
+    const {cart} = useStore()
     const [scroll, setIsScroll] = useState(false)
     const {userId, user} = useAuth()
 
+    const [isMounted, setIsMounted] = useState(false);
+
     useEffect(() => {
+        setIsMounted(true);
         const onScroll = () => {
             if (window.scrollY > 0) {
                 setIsScroll(true)
@@ -25,6 +30,10 @@ const UserHeader = () => {
         window.addEventListener('scroll', onScroll, {passive: true});
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    if (!isMounted) {
+        return null;
+    }
     return (
         <header className={cn('w-full border-b-2 sticky inset-0 bg-white z-10', scroll && 'shadow-xl')}>
             <div className="max-w-6xl mx-auto p-3 flex justify-between items-center">
@@ -32,8 +41,11 @@ const UserHeader = () => {
                     <Link href='/' className='uppercase font-bold text-2xl'>Store</Link>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Button variant='outline'>
-                        <ShoppingBasket/>
+                    <Button variant='outline' asChild>
+                        <Link href='/cart' className='flex items-center gap-2'>
+                            <ShoppingBasket/>
+                            <span className='font-bold text-lg'>{cart.length}</span>
+                        </Link>
                     </Button>
                     <div className='items-center gap-2 hidden sm:flex'>
                         {!userId ? (
