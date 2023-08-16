@@ -9,7 +9,12 @@ export async function POST(req: Request){
                 where: {
                     userId
                 }, include: {
-                    likedProducts: true
+                    likedProducts: true,
+                    orders: {
+                        include: {
+                            products: true
+                        }
+                    }
                 }
             })
             if(isUserExists){
