@@ -1,7 +1,5 @@
-import {auth} from "@clerk/nextjs";
 import prismaDb from "@/configs/prisma";
 import {NextResponse} from "next/server";
-import {Product} from "@prisma/client";
 
 export async function POST(req: Request){
     try {
@@ -10,6 +8,8 @@ export async function POST(req: Request){
             const isUserExists = await prismaDb.user.findUnique({
                 where: {
                     userId
+                }, include: {
+                    likedProducts: true
                 }
             })
             if(isUserExists){
