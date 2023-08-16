@@ -4,6 +4,7 @@ import {useGetAllProducts} from "@/hooks/useGetAllProducts";
 import ProductCard from "@/components/ProductCard";
 import {Expand, ShoppingCart} from "lucide-react";
 import Skeleton from "@/components/Skeleton";
+import Link from "next/link";
 
 export default function Home() {
     const {isLoading, products} = useGetAllProducts()
@@ -22,11 +23,11 @@ export default function Home() {
                     ))
                 )}
                 {products.map(item => (
-                    <ProductCard key={item.id} {...item} link={`/products/${item.id}`}>
+                    <ProductCard key={item.id} {...item} link={`/products/${item.id}`} likeButton>
                         <>
-                            <span className='rounded-full bg-black p-3 flex justify-center'>
+                            <Link href={`/products/${item.id}`} className='rounded-full bg-black p-3 flex justify-center'>
                                 <Expand className='text-white'/>
-                            </span>
+                            </Link>
                             <span className='rounded-full bg-black p-3 flex justify-center'>
                                 <ShoppingCart className='text-white'/>
                             </span>
