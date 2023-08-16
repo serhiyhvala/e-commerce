@@ -26,7 +26,7 @@ const ProductCard: FC<IProductCard> = ({id, price, description, image, title, ch
         } catch (error) {
             console.error(error)
             setClicked(false)
-            toast.error("Something went wrong")
+            toast.error("U need to be authorized!")
         }
     }
 
