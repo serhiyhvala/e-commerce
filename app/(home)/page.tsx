@@ -5,9 +5,11 @@ import ProductCard from "@/components/ProductCard";
 import {Expand, ShoppingCart} from "lucide-react";
 import Skeleton from "@/components/Skeleton";
 import Link from "next/link";
+import {useStore} from "@/store/store";
 
 export default function Home() {
     const {isLoading, products} = useGetAllProducts()
+    const {handleAddItemToCart} = useStore()
 
     return <section className='flex flex-1 flex-col justify-center w-full max-w-6xl mx-auto px-3 py-5 gap-6'>
         <div
@@ -25,11 +27,12 @@ export default function Home() {
                 {products.map(item => (
                     <ProductCard key={item.id} {...item} link={`/products/${item.id}`} likeButton>
                         <>
-                            <Link href={`/products/${item.id}`} className='rounded-full bg-black p-3 flex justify-center'>
+                            <Link href={`/products/${item.id}`}
+                                  className='rounded-full bg-black p-3 flex justify-center'>
                                 <Expand className='text-white'/>
                             </Link>
-                            <span className='rounded-full bg-black p-3 flex justify-center'>
-                                <ShoppingCart className='text-white'/>
+                            <span className='rounded-full bg-black p-3 flex justify-center cursor-pointer'>
+                                <ShoppingCart className='text-white' onClick={() => handleAddItemToCart(item)}/>
                             </span>
                         </>
                     </ProductCard>
