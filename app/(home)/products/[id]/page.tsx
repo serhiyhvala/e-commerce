@@ -11,12 +11,14 @@ import Link from "next/link";
 import RelatedItems from "@/components/RelatedItems";
 import {cropText} from "@/utils/cropText";
 import {useState} from "react";
+import {useStore} from "@/store/store";
 
 const ProductPage = () => {
     const {id} = useParams()
     const {user} = useAuth()
     const {isLoading, currentProduct} = useGetCurrentProduct(id as string)
     const [isOpen, setIsOpen] = useState(false)
+    const {handleAddItemToCart} = useStore()
     if (isLoading) {
         return <Loading/>
     }
@@ -51,7 +53,7 @@ const ProductPage = () => {
                     </div>
                     {user?.isAdmin ? (
                         <div className='flex items-center gap-2'>
-                            <Button>
+                            <Button onClick={() => handleAddItemToCart(currentProduct)}>
                                 <div className="flex items-center gap-2">
                                     <span>Add To Cart</span>
                                     <ShoppingCart/>
@@ -66,7 +68,7 @@ const ProductPage = () => {
                             </Button>
                         </div>
                     ) : (
-                        <Button className='self-start'>
+                        <Button className='self-start' onClick={() => handleAddItemToCart(currentProduct)}>
                             <div className="flex items-center gap-2">
                                 <span>Add To Cart</span>
                                 <ShoppingCart/>
