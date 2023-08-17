@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import {Product} from "@prisma/client";
 import Loading from "@/components/Loading";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import {Button} from "@/components/ui/button";
 
 const ProductsPage = () => {
     const {isLoading, products} = useGetAllProducts()
@@ -38,9 +39,13 @@ const ProductsPage = () => {
                 className="w-full h-[250px] sm:h-[450px]  bg-gradient-to-r from-sky-200 to-sky-800 rounded-xl flex items-center justify-center">
                 <span className='font-bold text-2xl sm:text-5xl text-white'>All Products!</span>
             </div>
-            <div className="self-start bg-black border-2 dark:bg-white text-white dark:text-black px-3 py-2 rounded-xl">
+            <div className='self-start'>
                 <DropdownMenu>
-                    <DropdownMenuTrigger>Sort by: {sortedType}</DropdownMenuTrigger>
+                    <DropdownMenuTrigger>
+                        <Button>
+                            Sort by: {sortedType}
+                        </Button>
+                    </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem onClick={() => setSortedType("asc")}>ASC</DropdownMenuItem>
                         <DropdownMenuItem onClick={() => setSortedType("desc")}>DESC</DropdownMenuItem>
