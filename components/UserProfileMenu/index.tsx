@@ -20,7 +20,7 @@ const UserProfileMenu = () => {
                 </Avatar>
             </DropdownMenuTrigger>
             {isOpen && (
-                <DropdownMenuContent>
+                <DropdownMenuContent className='w-[200px]'>
                     <DropdownMenuItem onClick={() => setIsOpen(false)}>
                         <Link href="/profile" className='w-full flex items-center gap-2'>
                             <User className='w-5 h-5'/>

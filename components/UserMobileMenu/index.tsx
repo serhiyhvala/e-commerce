@@ -11,7 +11,7 @@ const UserMobileMenu = () => {
             <DropdownMenu>
                 <DropdownMenuTrigger><MenuIcon
                     className='block sm:hidden'/></DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className='w-[200px]'>
                     <DropdownMenuItem>
                         <Link href="/sign-in" className='w-full flex items-center gap-2'>
                             <span>Sign In</span>
