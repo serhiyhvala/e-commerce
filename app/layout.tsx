@@ -8,7 +8,10 @@ import ThemeProvider from "@/providers/themeProvider";
 const roboto = Urbanist({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-    title: "Create Next App",
+    title: "SHOP",
+    icons: {
+        icon: "/favicon.png"
+    }
 };
 
 export default function RootLayout({
