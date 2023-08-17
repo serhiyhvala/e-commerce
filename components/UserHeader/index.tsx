@@ -10,6 +10,7 @@ import {cn} from "@/lib/utils";
 import UserProfileMenu from "@/components/UserProfileMenu";
 import {useStore} from "@/store/store";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import CartSheet from "@/components/CartSheet";
 
 const UserHeader = () => {
     const {cart} = useStore()
@@ -36,18 +37,14 @@ const UserHeader = () => {
         return null;
     }
     return (
-        <header className={cn('dark:bg-[#020817] w-full border-b-2 sticky inset-0 bg-white z-10', scroll && 'shadow-xl')}>
+        <header
+            className={cn('dark:bg-[#020817] w-full border-b-2 sticky inset-0 bg-white z-10', scroll && 'shadow-xl')}>
             <div className="max-w-6xl mx-auto p-3 flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <Link href='/' className='uppercase font-bold text-2xl'>Store</Link>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Button variant='outline' asChild>
-                        <Link href='/cart' className='flex items-center gap-2'>
-                            <ShoppingBasket/>
-                            <span className='font-bold text-lg'>{cart.length}</span>
-                        </Link>
-                    </Button>
+                    <CartSheet/>
                     <div className='items-center gap-2 hidden sm:flex'>
                         {!userId ? (
                             <>
@@ -72,7 +69,7 @@ const UserHeader = () => {
                         )}
                     </div>
                     <UserMobileMenu/>
-                    <ThemeSwitch />
+                    <ThemeSwitch/>
                 </div>
             </div>
         </header>
