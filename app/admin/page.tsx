@@ -10,7 +10,6 @@ import {useGetAllOrders} from "@/hooks/useGetAllOrders";
 const Admin = () => {
     const {products} = useGetAllProducts()
     const {orders} = useGetAllOrders()
-    console.log(orders)
     const dataOrders: IOrderColumns[] = orders.map(item => (
         {
             fullName: item.fullName,

@@ -18,7 +18,6 @@ const ProductsPage = () => {
     const {handleAddItemToCart} = useStore()
 
     useEffect(() => {
-        console.log(sortedType)
         if (sortedType === "asc") {
             setSortedProducts(sortedProducts.sort((a, b) => a.price - b.price))
         } else {
