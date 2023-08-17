@@ -7,14 +7,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {BadgePlus, GalleryVertical, LayoutDashboard, MenuIcon, ShoppingBasket} from "lucide-react";
+import {BadgePlus, GalleryVertical, Home, LayoutDashboard, MenuIcon, ShoppingBasket} from "lucide-react";
 import {useState} from "react";
 
 const MobileMenu = () => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger onClick={() => setIsOpen(true)}><MenuIcon className='block sm:hidden'/></DropdownMenuTrigger>
+            <DropdownMenuTrigger onClick={() => setIsOpen(true)}><MenuIcon className='block lg:hidden'/></DropdownMenuTrigger>
             {isOpen && (
                 <DropdownMenuContent>
                     <DropdownMenuItem onClick={() => setIsOpen(false)}>
@@ -39,6 +39,12 @@ const MobileMenu = () => {
                         <Link href="/admin/new-product" className='flex items-center gap-2 w-full'>
                             <BadgePlus className='h-5 w-5'/>
                             <span>New Product</span>
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setIsOpen(false)}>
+                        <Link href="/" className='flex items-center gap-2 w-full'>
+                            <Home className='h-5 w-5'/>
+                            <span>Home</span>
                         </Link>
                     </DropdownMenuItem>
                 </DropdownMenuContent>

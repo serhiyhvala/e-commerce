@@ -2,7 +2,8 @@ import {UserButton} from "@clerk/nextjs";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import MobileMenu from "@/components/MobileMenu";
-import {BadgePlus, GalleryVertical, LayoutDashboard, ShoppingBasket} from "lucide-react";
+import {BadgePlus, GalleryVertical, Home, LayoutDashboard, ShoppingBasket} from "lucide-react";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 const AdminHeader = () => {
     return (
@@ -11,7 +12,15 @@ const AdminHeader = () => {
                 <span className="text-2xl font-bold">
                     <Link href='/admin'>Admin Panel</Link>
                 </span>
-                <ul className='hidden items-center gap-4 sm:flex'>
+                <ul className='hidden items-center gap-4 lg:flex'>
+                    <li>
+                        <Button asChild>
+                            <Link href="/" className='flex items-center gap-2'>
+                                <Home className='w-5 h-5'/>
+                                <span>Home</span>
+                            </Link>
+                        </Button>
+                    </li>
                     <li>
                         <Button asChild>
                             <Link href="/admin" className='flex items-center gap-2'>
@@ -47,6 +56,7 @@ const AdminHeader = () => {
                 </ul>
             </div>
             <div className="flex gap-2 items-center">
+                <ThemeSwitch />
                 <UserButton afterSignOutUrl="/"/>
                 <MobileMenu/>
             </div>
