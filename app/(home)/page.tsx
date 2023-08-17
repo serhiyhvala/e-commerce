@@ -1,15 +1,7 @@
 'use client'
 
-import {useGetAllProducts} from "@/hooks/useGetAllProducts";
-import ProductCard from "@/components/ProductCard";
-import {Expand, ShoppingCart} from "lucide-react";
-import Skeleton from "@/components/Skeleton";
-import Link from "next/link";
-import {useStore} from "@/store/store";
 import {useEffect, useState} from "react";
-import RelatedProducts from "@/components/FeaturedProducts";
 import FeaturedProducts from "@/components/FeaturedProducts";
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import FAQ from "@/components/FAQ";
 
 export default function Home() {
