@@ -8,9 +8,9 @@ import {Trash} from "lucide-react";
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import {redirect, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 
-const CartPage = () => {
+const OrderPage = () => {
     const {cart, removeAll, removeItem} = useStore()
     const [isLoading, setIsLoading] = useState(false)
     const [isMounted, setIsMounted] = useState(false);
@@ -84,7 +84,7 @@ const CartPage = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="flex flex-col max-w-[400px] w-full self-center gap-3 bg-gray-100 rounded-lg p-5">
+                    <div className="flex flex-col max-w-[400px] w-full self-center gap-3 border-2 rounded-lg p-5">
                         <span className='pb-5 border-b-2 font-bold text-2xl'>Order summary</span>
                         <div className="flex justify-between items-center">
                             <span className='font-bold'>Order total</span>
@@ -112,4 +112,4 @@ const CartPage = () => {
     );
 };
 
-export default CartPage;
+export default OrderPage;
