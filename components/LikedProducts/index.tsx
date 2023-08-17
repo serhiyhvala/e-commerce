@@ -2,9 +2,11 @@ import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 import {Expand, ShoppingCart} from "lucide-react";
 import {useAuth} from "@/hooks/useAuth";
+import {useStore} from "@/store/store";
 
 const LikedProducts = () => {
     const {user} = useAuth()
+    const {handleAddItemToCart} = useStore()
     return (
         <>
             <span className='text-4xl font-bold pb-5 border-b-2 flex items-start'>Liked Products</span>
@@ -17,9 +19,9 @@ const LikedProducts = () => {
                                       className='rounded-full bg-black p-3 flex justify-center'>
                                     <Expand className='text-white'/>
                                 </Link>
-                                <span className='rounded-full bg-black p-3 flex justify-center'>
-                                <ShoppingCart className='text-white'/>
-                            </span>
+                                <span className='rounded-full bg-black p-3 flex justify-center cursor-pointer'>
+                                    <ShoppingCart className='text-white' onClick={() => handleAddItemToCart(item)}/>
+                                </span>
                             </>
                         </ProductCard>
                     ))
