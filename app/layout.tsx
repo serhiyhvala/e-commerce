@@ -3,6 +3,7 @@ import "./globals.css";
 import type {Metadata} from "next";
 import {Urbanist} from "next/font/google";
 import {Toaster} from "react-hot-toast";
+import ThemeProvider from "@/providers/themeProvider";
 
 const roboto = Urbanist({subsets: ["latin"]});
 
@@ -17,12 +18,14 @@ export default function RootLayout({
 }) {
     return (
         <ClerkProvider>
-                <html lang="en">
-                <body className={roboto.className}>
-                <Toaster />
+            <html lang="en">
+            <body className={roboto.className}>
+            <Toaster/>
+            <ThemeProvider>
                 {children}
-                </body>
-                </html>
+            </ThemeProvider>
+            </body>
+            </html>
         </ClerkProvider>
     );
 }
