@@ -3,6 +3,8 @@
 import {useEffect, useState} from "react";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import FAQ from "@/components/FAQ";
+import Link from "next/link";
+import {ArrowRight} from "lucide-react";
 
 export default function Home() {
     const [isMounted, setIsMounted] = useState(false)
@@ -21,7 +23,13 @@ export default function Home() {
             <span className='font-bold text-2xl sm:text-5xl text-white'>Explore Our Products!</span>
         </div>
         <div className="flex flex-col gap-7">
-            <span className='font-bold text-3xl pb-3 border-b-2'>Featured Products</span>
+            <div className="flex justify-between items-center pb-3 border-b-2 flex-wrap gap-3">
+                <span className='font-bold text-3xl'>Featured Products</span>
+                <Link href='/products' className='flex items-center gap-3 hover:text-blue-500 transition'>
+                    <span>All Products</span>
+                    <ArrowRight />
+                </Link>
+            </div>
             <FeaturedProducts />
         </div>
         <div className="flex flex-col">
