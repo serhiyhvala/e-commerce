@@ -49,7 +49,7 @@ const Form: FC<IFormProps> = ({children, handleSubmitForm, formState}) => {
                         <ImageUpload handleUpload={handleUpload}/>
                     )}
             </div>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 gap-5">
                 <div className="">
                     <Label htmlFor='title'>Name</Label>
                     <Input id="title" name='title' placeholder='Product Name'
