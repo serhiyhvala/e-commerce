@@ -7,6 +7,7 @@ import {SignOutButton, useUser} from "@clerk/nextjs";
 import {useState} from "react";
 import {Avatar, AvatarImage} from "@/components/ui/avatar";
 import {useAuth} from "@/hooks/useAuth";
+import {Button} from "@/components/ui/button";
 
 const UserProfileMenu = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -36,7 +37,9 @@ const UserProfileMenu = () => {
                         </DropdownMenuItem>
                     )}
                     <DropdownMenuItem onClick={() => setIsOpen(false)}>
-                        <SignOutButton />
+                        <Button asChild className='w-full'>
+                            <SignOutButton />
+                        </Button>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             )}
