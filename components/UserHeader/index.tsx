@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import UserProfileMenu from "@/components/UserProfileMenu";
 import {useStore} from "@/store/store";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 const UserHeader = () => {
     const {cart} = useStore()
@@ -35,7 +36,7 @@ const UserHeader = () => {
         return null;
     }
     return (
-        <header className={cn('w-full border-b-2 sticky inset-0 bg-white z-10', scroll && 'shadow-xl')}>
+        <header className={cn('dark:bg-[#020817] w-full border-b-2 sticky inset-0 bg-white z-10', scroll && 'shadow-xl')}>
             <div className="max-w-6xl mx-auto p-3 flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <Link href='/' className='uppercase font-bold text-2xl'>Store</Link>
@@ -71,6 +72,7 @@ const UserHeader = () => {
                         )}
                     </div>
                     <UserMobileMenu/>
+                    <ThemeSwitch />
                 </div>
             </div>
         </header>
