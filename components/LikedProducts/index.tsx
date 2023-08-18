@@ -25,7 +25,7 @@ const LikedProducts = () => {
                             </>
                         </ProductCard>
                     ))
-                ) : <span className='text-5xl font-bold'>You don&apos;t have any liked products</span>}
+                ) : <span className='text-5xl font-bold items-center'>You don&apos;t have any liked products</span>}
             </div>
         </>
     );

@@ -8,7 +8,7 @@ import ThemeProvider from "@/providers/themeProvider";
 const roboto = Urbanist({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-    title: "SHOP",
+    title: "STORE",
     icons: {
         icon: "/favicon.png"
     }

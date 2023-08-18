@@ -7,7 +7,7 @@ import {IOrder} from "@/types/user.types";
 
 const OrderItem:FC<IOrder> = ({products,fullName, address, email,totalPrice  }) => {
     return (
-        <div className='flex justify-center sm:justify-start flex-wrap bg-gray-100 rounded-xl p-2 gap-5'>
+        <div className='flex justify-center sm:justify-start flex-wrap border-2 rounded-xl p-2 gap-5'>
             <div className="flex flex-col gap-2">
                 <span className='text-2xl font-bold pb-2 border-b-2'>Products</span>
                 {products.map(item => (
@@ -16,7 +16,7 @@ const OrderItem:FC<IOrder> = ({products,fullName, address, email,totalPrice  }) 
                                className='rounded-xl'/>
                         <Button asChild>
                             <Link href={`/products/${item.id}`} className='rounded-full bg-black p-3 flex justify-center absolute top-2 right-2'>
-                                <Expand className='text-white'/>
+                                <Expand className='dark:text-black text-white'/>
                             </Link>
                         </Button>
                     </div>
