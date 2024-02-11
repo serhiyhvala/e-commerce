@@ -13,7 +13,6 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import CartSheet from "@/components/CartSheet";
 
 const UserHeader = () => {
-  const { cart } = useStore();
   const [scroll, setIsScroll] = useState(false);
   const { userId, user } = useAuth();
 
@@ -39,14 +38,14 @@ const UserHeader = () => {
   return (
     <header
       className={cn(
-        "dark:bg-[#020817] w-full border-b-2 sticky inset-0 bg-white z-10",
+        "dark:bg-neutral-950 w-full border-b-2 sticky inset-0 bg-white z-10",
         scroll && "shadow-xl",
       )}
     >
       <div className="max-w-6xl mx-auto p-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Link href="/" className="uppercase font-bold text-2xl">
-            Store
+            LOGO
           </Link>
         </div>
         <div className="flex items-center gap-2">
@@ -75,7 +74,6 @@ const UserHeader = () => {
             )}
           </div>
           <UserMobileMenu />
-          <ThemeSwitch />
         </div>
       </div>
     </header>

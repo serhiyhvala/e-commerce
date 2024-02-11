@@ -7,7 +7,6 @@ import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import LikedProducts from "@/components/LikedProducts";
 import Orders from "@/components/Orders";
 
 const ProfilePage = () => {
@@ -67,7 +66,6 @@ const ProfilePage = () => {
           )}
         </div>
       </div>
-      <LikedProducts />
       <Orders />
     </div>
   );
