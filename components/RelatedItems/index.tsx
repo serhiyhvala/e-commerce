@@ -22,11 +22,7 @@ const RelatedItems: FC<IRelatedItemsProps> = ({ currentProductId }) => {
   return (
     <div className="mt-5 flex flex-col gap-5">
       <span className="text-4xl font-bold">Related Items</span>
-      <div className="flex gap-10 items-center justify-center flex-wrap">
-        {isLoading &&
-          new Array(3)
-            .fill(Math.random())
-            .map((item) => <Skeleton key={item} />)}
+      <div className="flex items-center justify-center mb-10">
         {relatedItems.map((item) => (
           <ProductCard key={item.id} link={`/products/${item.id}`} {...item}>
             <>

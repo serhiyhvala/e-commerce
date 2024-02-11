@@ -6,13 +6,11 @@ import { useGetAllProducts } from "@/hooks/useGetAllProducts";
 import { useStore } from "@/store/store";
 
 const RelatedProducts = () => {
-  const { isLoading, products } = useGetAllProducts();
+  const { products } = useGetAllProducts();
   const { handleAddItemToCart } = useStore();
   const featuredProducts = products.slice(0, 3);
   return (
-    <div className="flex items-center justify-center flex-wrap gap-16">
-      {isLoading &&
-        new Array(3).fill(Math.random()).map((item) => <Skeleton key={item} />)}
+    <div className="flex items-center justify-center">
       {featuredProducts.map((item) => (
         <ProductCard
           key={item.id}
