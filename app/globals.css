@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: bg-neutral-950;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -75,6 +75,10 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-neutral-950 text-foreground;
   }
+}
+
+.container {
+  @apply flex flex-1 flex-col justify-center w-full max-w-6xl mx-auto px-3 py-5 gap-10
 }
