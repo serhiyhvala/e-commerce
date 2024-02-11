@@ -1,40 +1,47 @@
-'use client'
+"use client";
 
-import {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import FeaturedProducts from "@/components/FeaturedProducts";
-import FAQ from "@/components/FAQ";
 import Link from "next/link";
-import {ArrowRight} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { WaitList } from "@/components/WaitList";
 
 export default function Home() {
-    const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        setIsMounted(true)
-    }, [])
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    if (!isMounted) {
-        return null
-    }
+  if (!isMounted) {
+    return null;
+  }
 
-    return <section className='flex flex-1 flex-col justify-center w-full max-w-6xl mx-auto px-3 py-5 gap-10'>
-        <div
-            className="w-full h-[250px] sm:h-[450px]  bg-gradient-to-r from-cyan-400 to-blue-800 rounded-xl flex items-center justify-center">
-            <span className='font-bold text-2xl sm:text-5xl text-white'>Explore Our Products!</span>
-        </div>
-        <div className="flex flex-col gap-7">
+  return (
+    <>
+      <div className="h-[calc(100vh-60px)] z-0 w-full bg-neutral-950 flex flex-col items-center justify-center overflow-hidden rounded-md">
+        <h1 className="md:text-7xl text-3xl lg:text-9xl relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
+          Aceternity
+        </h1>
+      </div>
+      <section className="flex flex-1 flex-col justify-center w-full mx-auto pt-5 gap-10">
+        <div className="container">
+          <div className="flex flex-col gap-7">
             <div className="flex justify-between items-center pb-3 border-b-2 flex-wrap gap-3">
-                <span className='font-bold text-3xl'>Featured Products</span>
-                <Link href='/products' className='flex items-center gap-3 hover:text-blue-500 transition'>
-                    <span>All Products</span>
-                    <ArrowRight />
-                </Link>
+              <span className="font-bold text-3xl">Featured Products</span>
+              <Link
+                href="/products"
+                className="flex items-center gap-3 hover:text-blue-500 transition"
+              >
+                <span>All Products</span>
+                <ArrowRight />
+              </Link>
             </div>
             <FeaturedProducts />
+          </div>
         </div>
-        <div className="flex flex-col">
-            <span className='font-bold text-3xl'>FAQ</span>
-            <FAQ />
-        </div>
-    </section>;
+        <WaitList />
+      </section>
+    </>
+  );
 }
