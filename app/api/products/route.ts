@@ -1,14 +1,13 @@
 import prismaDb from "@/configs/prisma";
-import {NextResponse} from "next/server";
-export const revalidate = 0
-export async function GET(req: Request){
-    try {
-        const allProducts = await prismaDb.product.findMany({})
+import { NextResponse } from "next/server";
+export const revalidate = 0;
+export async function GET(req: Request) {
+  try {
+    const allProducts = await prismaDb.product.findMany({});
 
-        return NextResponse.json(allProducts)
-
-    } catch(error){
-        console.log('PRODUCT_POST', error)
-        return new NextResponse("Internal Error")
-    }
+    return NextResponse.json(allProducts);
+  } catch (error) {
+    console.log("PRODUCT_POST", error);
+    return new NextResponse("Internal Error");
+  }
 }

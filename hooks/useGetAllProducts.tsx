@@ -16,7 +16,7 @@ export const useGetAllProducts = () => {
       }
     };
 
-    getAllProducts().then(data => setProducts(data));
+    getAllProducts().then((data) => setProducts(data));
   }, []);
 
   return { isLoading, products };
