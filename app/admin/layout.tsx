@@ -1,25 +1,17 @@
-"use client";
-
 import { FC, ReactNode } from "react";
 import AdminHeader from "@/components/AdminHeader";
 import { useAuth } from "@/hooks/useAuth";
 import { redirect } from "next/navigation";
 import Loading from "@/components/Loading";
+import {currentUser} from "@clerk/nextjs/server";
 
-const AuthLayout: FC<{ children: ReactNode }> = ({ children }) => {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <Loading />;
-  }
+const AuthLayout: FC<{ children: ReactNode }> = async ({ children }) => {
+  const user = await currentUser()
 
   if (!user) {
     redirect("/sign-in");
   }
 
-  if (user && !user.isAdmin) {
-    redirect("/");
-  }
   return (
     <div className="p-3">
       <AdminHeader />

@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     } else {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

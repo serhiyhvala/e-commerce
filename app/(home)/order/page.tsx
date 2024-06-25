@@ -8,7 +8,14 @@ import { Trash } from "lucide-react";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { z } from "zod";
+
+
+const validationSchema = z.object({
+  email: z.string().email(),
+  address: z.string(),
+  fullName: z.string(),
+})
 
 const OrderPage = () => {
   const { cart, removeAll, removeItem } = useStore();
@@ -20,8 +27,6 @@ const OrderPage = () => {
     address: "",
   });
 
-  const router = useRouter();
-
   const totalPrice = cart.reduce((a, b) => a + b.price, 0);
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -31,19 +36,22 @@ const OrderPage = () => {
   const handleSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
+
+    if(!validationSchema.safeParse(input).success) {
+        setIsLoading(false);
+        return toast.error("Invalid input");
+    }
     try {
-      const { data } = await axios.post("/api/user/orders", {
+      const {data} = await axios.post("/api/user/orders", {
         cart,
         ...input,
         totalPrice,
       });
-      console.log(data);
+
+      window.location.href = data.url;
+
       setIsLoading(false);
-      router.push("/");
-      removeAll();
-      toast.success("Order created successfully");
     } catch (e) {
-      console.error(e);
       setIsLoading(false);
       toast.error("Something went wrong");
     }
