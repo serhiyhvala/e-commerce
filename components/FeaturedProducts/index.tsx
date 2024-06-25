@@ -1,4 +1,5 @@
-import Skeleton from "@/components/Skeleton";
+'use client'
+
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 import { Expand, ShoppingCart } from "lucide-react";
@@ -16,7 +17,6 @@ const RelatedProducts = () => {
           key={item.id}
           {...item}
           link={`/products/${item.id}`}
-          likeButton
         >
           <>
             <Link

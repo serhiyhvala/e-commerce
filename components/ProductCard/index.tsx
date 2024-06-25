@@ -8,37 +8,15 @@ import axios from "axios";
 import { PinContainer } from "@/components/3DPin";
 
 interface IProductCard extends Product {
-  children: ReactNode;
   link: string;
-  likeButton?: boolean;
 }
 
 const ProductCard: FC<IProductCard> = ({
-  id,
-  price,
   description,
   image,
   title,
-  children,
   link,
-  likeButton,
 }) => {
-  const [clicked, setClicked] = useState(false);
-  const { userId, user } = useAuth();
-
-  const handleLikeButton = async () => {
-    try {
-      setClicked(true);
-      const { data } = await axios.post("/api/user/products", { userId, id });
-      toast.success("Product added to your likes");
-    } catch (error) {
-      console.error(error);
-      setClicked(false);
-      toast.error("U need to be authorized!");
-    }
-  };
-
-  const isProductLiked = !!user?.likedProducts.find((item) => item.id === id);
 
   return (
     <PinContainer title="/see-info" href={link}>

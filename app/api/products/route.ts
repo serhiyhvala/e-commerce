@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export const revalidate = 0;
 export async function GET(req: Request) {
   try {
-    const allProducts = await prismaDb.product.findMany({});
+    const allProducts = await prismaDb.product.findMany();
 
     return NextResponse.json(allProducts);
   } catch (error) {
