@@ -15,7 +15,7 @@ const UserLayout: FC<{ children: ReactNode }> = ({ children }) => {
         if(paymentStatus === "true"){
             removeAll()
         }
-    }, [paymentStatus]);
+    }, [paymentStatus, removeAll]);
   return (
     <div className="flex flex-col h-full">
       <UserHeader />

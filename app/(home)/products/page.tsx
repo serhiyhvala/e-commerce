@@ -2,8 +2,6 @@
 
 import { useGetAllProducts } from "@/hooks/useGetAllProducts";
 import ProductCard from "@/components/ProductCard";
-import Link from "next/link";
-import { Expand, ShoppingCart } from "lucide-react";
 import { useStore } from "@/store/store";
 import { useEffect, useState } from "react";
 import { Product } from "@prisma/client";
@@ -28,7 +26,7 @@ const ProductsPage = () => {
     } else {
       setSortedProducts(sortedProducts.sort((a, b) => b.price - a.price));
     }
-  }, [sortedType]);
+  }, [sortedType, setSortedProducts]);
 
   useEffect(() => {
     setSortedProducts(products);
@@ -65,23 +63,7 @@ const ProductsPage = () => {
             key={item.id}
             {...item}
             link={`/products/${item.id}`}
-            likeButton
-          >
-            <>
-              <Link
-                href={`/products/${item.id}`}
-                className="rounded-full bg-black p-3 flex justify-center"
-              >
-                <Expand className="text-white" />
-              </Link>
-              <span className="rounded-full bg-black p-3 flex justify-center cursor-pointer">
-                <ShoppingCart
-                  className="text-white"
-                  onClick={() => handleAddItemToCart(item)}
-                />
-              </span>
-            </>
-          </ProductCard>
+          />
         ))}
       </div>
     </section>
