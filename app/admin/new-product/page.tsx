@@ -16,6 +16,7 @@ const NewProduct = () => {
     description: "",
     price: 0,
     image: "",
+    priceId: "",
   });
   const router = useRouter();
 
@@ -39,7 +40,7 @@ const NewProduct = () => {
       const { data } = await axios.post<Product>("/api/products/create", form);
       setIsLoading(false);
       router.push(`/admin/products/${data.id}`);
-      setForm({ title: "", description: "", image: "", price: 0 });
+      setForm({ title: "", description: "", image: "", price: 0, priceId: ""});
       toast.success("Product Created Successfully");
     } catch (error) {
       setIsLoading(false);

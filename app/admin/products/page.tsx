@@ -28,20 +28,7 @@ const ProductsPage = () => {
             key={product.id}
             {...product}
             link={`/admin/products/${product.id}`}
-          >
-            <Link
-              href={`/admin/products/${product.id}`}
-              className="rounded-full bg-black p-3 flex justify-center"
-            >
-              <Expand className="text-white" />
-            </Link>
-            <Link
-              href={`/admin/products/edit/${product.id}`}
-              className="rounded-full bg-black p-3 flex justify-center"
-            >
-              <Edit className="text-white" />
-            </Link>
-          </ProductCard>
+          />
         ))}
       </div>
     </div>

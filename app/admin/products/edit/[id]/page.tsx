@@ -21,7 +21,7 @@ const EditProduct = () => {
   useEffect(() => {
     if (currentProduct) {
       const { title, description, image, price } = currentProduct;
-      setForm({ title, description, price, image });
+      setForm({ title, description, price, image, priceId: "" });
     }
   }, [currentProduct]);
 

@@ -24,22 +24,7 @@ const RelatedItems: FC<IRelatedItemsProps> = ({ currentProductId }) => {
       <span className="text-4xl font-bold">Related Items</span>
       <div className="flex items-center justify-center mb-10">
         {relatedItems.map((item) => (
-          <ProductCard key={item.id} link={`/products/${item.id}`} {...item}>
-            <>
-              <Link
-                href={`/products/${item.id}`}
-                className="rounded-full bg-black p-3 flex justify-center"
-              >
-                <Expand className="text-white" />
-              </Link>
-              <span className="rounded-full bg-black p-3 flex justify-center cursor-pointer">
-                <ShoppingCart
-                  className="text-white"
-                  onClick={() => handleAddItemToCart(item)}
-                />
-              </span>
-            </>
-          </ProductCard>
+          <ProductCard key={item.id} link={`/products/${item.id}`} {...item} />
         ))}
       </div>
     </div>

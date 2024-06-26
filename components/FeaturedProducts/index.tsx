@@ -17,22 +17,7 @@ const RelatedProducts = () => {
           key={item.id}
           {...item}
           link={`/products/${item.id}`}
-        >
-          <>
-            <Link
-              href={`/products/${item.id}`}
-              className="rounded-full bg-black p-3 flex justify-center"
-            >
-              <Expand className="text-white" />
-            </Link>
-            <span className="rounded-full bg-black p-3 flex justify-center cursor-pointer">
-              <ShoppingCart
-                className="text-white"
-                onClick={() => handleAddItemToCart(item)}
-              />
-            </span>
-          </>
-        </ProductCard>
+        />
       ))}
     </div>
   );

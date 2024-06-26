@@ -5,7 +5,6 @@ const useClerkTheme = () => {
   const { theme } = useTheme();
   const clerkVariables: Variables = {
     colorBackground: theme === "dark" ? "#19191A" : "white",
-    colorAlphaShade: theme === "dark" ? "white" : "black",
     colorText: theme === "dark" ? "white" : "black",
     colorInputText: theme === "dark" ? "white" : "black",
     colorInputBackground: theme === "dark" ? "#19191A" : "white",
