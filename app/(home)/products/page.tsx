@@ -18,7 +18,6 @@ const ProductsPage = () => {
   const { isLoading, products } = useGetAllProducts();
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [sortedType, setSortedType] = useState<"asc" | "desc" | "">("");
-  const { handleAddItemToCart } = useStore();
 
   useEffect(() => {
     if (sortedType === "asc") {
